@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import wueffi.MiniGameCore.commands.MiniGameCommand;
 import wueffi.MiniGameCore.commands.PartyCommand;
+import wueffi.MiniGameCore.commands.TeamChatCommand;
 import wueffi.MiniGameCore.managers.GameManager;
 import wueffi.MiniGameCore.managers.LobbyManager;
 import wueffi.MiniGameCore.managers.ScoreBoardManager;
@@ -52,7 +53,14 @@ public class MiniGameCore extends JavaPlugin {
         getCommand("mg").setTabCompleter(new MiniGameTabCompleter(this));
         getCommand("party").setExecutor(new PartyCommand(this));
         getCommand("party").setTabCompleter(new PartyTabCompleter(this));
+        getCommand("p").setExecutor(new PartyCommand(this));
+        getCommand("p").setTabCompleter(new PartyTabCompleter(this));
+        getCommand("teamchat").setExecutor(new TeamChatCommand(this));
+        getCommand("tc").setExecutor(new TeamChatCommand(this));
         getLogger().info("Commands registered!");
+
+        getLogger().info("Starting cleanup task...");
+        CleanUpWorlds.cleanUpWorlds(this);
 
         ScoreBoardManager.startAnimationLoop();
 
@@ -75,6 +83,8 @@ public class MiniGameCore extends JavaPlugin {
             getLogger().info("Shut down Lobby: " + lobbyid);
         }
         GameManager.frozenPlayers.clear();
+        getLogger().info("Starting cleanup task...");
+        CleanUpWorlds.cleanUpWorlds(this);
         getLogger().info("MinigameCore disabled!");
     }
 

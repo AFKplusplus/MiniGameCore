@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/Version-1.3.5-blue)
+![Static Badge](https://img.shields.io/badge/Version-1.3.6-blue)
 # MiniGameCore
 
 **MiniGameCore** is a central plugin for managing minigame lobbies in Minecraft Paper Servers. It handles hosting, joining, starting, and stopping games – with animated scoreboards, statistics, and multiverse support.
@@ -16,27 +16,30 @@
 ---
 ## 📜 Commands & Permissions
 
-| Command                           | Description                                          | Permission            |
-|-----------------------------------|------------------------------------------------------|-----------------------|
-| `/mg host <game>`                 | Creates a new lobby                                  | `mgcore.host`         |
-| `/mg join <lobby-id>`             | Join the lobby                                       | `mgcore.join`         |
-| `/mg ready`                       | Set your Status as Ready                             | `mgcore.ready`        |
-| `/mg unready`                     | Set your Status as not Ready                         | `mgcore.ready`        |
-| `/mg confirm`                     | Confirm an action                                    | `mgcore.confirm`      |
-| `/mg leave`                       | Leave the lobby or game                              | `mgcore.leave`        |
-| `/mg start`                       | Start the game manually (if allowed)                 | `mgcore.start`        |
-| `/mg spectate <lobby-id\|player>` | Join a game as a spectator                           | `mgcore.spectate`     |
-| `/mg reload`                      | Reload the plugin                                    | `mgcore.admin`        |
-| `/mg stop <lobby-id>`             | Stop a specific game                                 | `mgcore.admin`        |
-| `/mg stopall`                     | Stop all active games                                | `mgcore.admin`        |
-| `/mg ban <player>`                | Ban the player from using most MiniGameCore commands | `mgcore.admin`        |
-| `/mg version`                     | Displays the version of MiniGameCore you are using   | `mgcore.use` (default)|
-| `/party create <name>`            | Creates a new party                                  | `mgcore.party.create` |
-| `/party join <player>`            | Join the player's Party                              | `mgcore.party.join`   |
-| `/party leave`                    | Leave your party                                     | `mgcore.party.join`   |
-| `/party invite <player>`          | Invite a player to your party                        | `mgcore.party.invite` |
-| `/party deny`                     | Deny a player's invitation to their party            | `mgcore.party.invite` |
-| `/party list`                     | List the Party's Members                             | `mgcore.party.list`   |
+Aliasses: `/p` for `/party` and `/tc` for `/teamchat`
+
+| Command                           | Description                                          | Permission             |
+|-----------------------------------|------------------------------------------------------|------------------------|
+| `/mg host <game>`                 | Creates a new lobby                                  | `mgcore.host`          |
+| `/mg join <lobby-id>`             | Join the lobby                                       | `mgcore.join`          |
+| `/mg ready`                       | Set your Status as Ready                             | `mgcore.ready`         |
+| `/mg unready`                     | Set your Status as not Ready                         | `mgcore.ready`         |
+| `/mg confirm`                     | Confirm an action                                    | `mgcore.confirm`       |
+| `/mg leave`                       | Leave the lobby or game                              | `mgcore.leave`         |
+| `/mg start`                       | Start the game manually (if allowed)                 | `mgcore.start`         |
+| `/mg spectate <lobby-id\|player>` | Join a game as a spectator                           | `mgcore.spectate`      |
+| `/mg reload`                      | Reload the plugin                                    | `mgcore.admin`         |
+| `/mg stop <lobby-id>`             | Stop a specific game                                 | `mgcore.admin`         |
+| `/mg stopall`                     | Stop all active games                                | `mgcore.admin`         |
+| `/mg ban <player>`                | Ban the player from using most MiniGameCore commands | `mgcore.admin`         |
+| `/mg version`                     | Displays the version of MiniGameCore you are using   | `mgcore.use` (default) |
+| `/party create <name>`            | Creates a new party                                  | `mgcore.party.create`  |
+| `/party join <player>`            | Join the player's Party                              | `mgcore.party.join`    |
+| `/party leave`                    | Leave your party                                     | `mgcore.party.join`    |
+| `/party invite <player>`          | Invite a player to your party                        | `mgcore.party.invite`  |
+| `/party deny`                     | Deny a player's invitation to their party            | `mgcore.party.invite`  |
+| `/party list`                     | List the Party's Members                             | `mgcore.party.list`    |
+| `/teamchat <message>`             | Sends the message to your team only                  | `mgcore.teamchat`      |
 
 ---
 
