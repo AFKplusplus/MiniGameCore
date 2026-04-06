@@ -67,6 +67,7 @@ public class Lobby {
     }
 
     public boolean containsPlayer(Player player) {
+        if (player == null) return false;
         return players.contains(player.getUniqueId());
     }
 

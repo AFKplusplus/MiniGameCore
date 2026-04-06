@@ -1,6 +1,5 @@
 package wueffi.MiniGameCore.utils;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -76,7 +75,7 @@ public class ScoreBoard {
             for (int i = 0; i < count; i++) {
                 Team currentTeam = lobby.getTeam(i);
 
-                String youString = "";
+                String youString;
                 if (currentTeam.containsPlayer(player)) youString = "§8(YOU)§7";
                 else youString = "";
 

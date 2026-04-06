@@ -36,7 +36,7 @@ public class GameManager implements Listener {
     public static final Set<Player> frozenPlayers = new HashSet<>();
     static Map<UUID, Location> playerRespawnPoints = new HashMap<>();
     private static MiniGameCore plugin;
-    private static Map<UUID, UUID> lastHit = new HashMap<>();
+    private static final Map<UUID, UUID> lastHit = new HashMap<>();
     static final Map<Lobby, GameConfig> configCache = new HashMap<>();
 
     public GameManager(MiniGameCore plugin) {
@@ -59,7 +59,7 @@ public class GameManager implements Listener {
 
         for (Player player : lobby.getPlayers()) {
             player.sendMessage("§8[§6MiniGameCore§8]§a " + lobby.getGameName() + " is starting!");
-            lastHit.remove(player); // just to make sure
+            lastHit.remove(player.getUniqueId()); // just to make sure
             frozenPlayers.add(player);
             PlayerSoftReset(player);
         }
@@ -142,8 +142,11 @@ public class GameManager implements Listener {
             }
 
             for (int i = 0; i < players.size(); i++) {
-                lobby.getTeam(i % teamCount).addPlayer(players.get(i));
-                lobby.getTeam(i % teamCount).updateAlive();
+                if (lobby.getTeam(i % teamCount).addPlayer(players.get(i))) {
+                    lobby.getTeam(i % teamCount).updateAlive();
+                } else {
+                    plugin.getLogger().warning("Failed to add player " + players.get(i) + " to Team!");
+                }
             }
 
             for (int teamIndex = 0; teamIndex < teamCount; teamIndex++) {
@@ -559,6 +562,7 @@ public class GameManager implements Listener {
         if (lobby == null) return;
 
         if (Objects.equals(lobby.getLobbyState(), "WAITING")) {
+            assert damager != null;
             damager.sendMessage("§8[§6MiniGameCore§8]§c You are not allowed to PVP (yet)");
             event.setCancelled(true);
             return;
@@ -567,17 +571,20 @@ public class GameManager implements Listener {
         GameConfig config = getConfig(lobby);
         if (!config.getPVPMode() && Objects.equals(lobby.getLobbyState(), "GAME")) {
             event.setCancelled(true);
+            assert damager != null;
             damager.sendMessage("§8[§6MiniGameCore§8]§c You are not allowed to PVP");
             return;
         }
 
         if (!config.getAllowFriendlyFire() && config.getTeams() > 0 && lobby.getTeamByPlayer(damager).equals(lobby.getTeamByPlayer(damaged))) {
             event.setCancelled(true);
+            assert damager != null;
             damager.sendMessage("§8[§6MiniGameCore§8]§c Friendly fire is not enabled for this minigame");
             return;
         }
 
         lastHit.remove(damaged.getUniqueId());
+        assert damager != null;
         lastHit.put(damaged.getUniqueId(), damager.getUniqueId());
     }
 

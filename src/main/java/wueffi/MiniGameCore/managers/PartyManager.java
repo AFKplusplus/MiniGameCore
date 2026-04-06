@@ -4,7 +4,6 @@ import org.bukkit.entity.Player;
 import wueffi.MiniGameCore.utils.Party;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PartyManager {
@@ -24,14 +23,6 @@ public class PartyManager {
                 .filter(party -> party.containsPlayer(player))
                 .findFirst()
                 .orElse(null);
-    }
-
-    public Party getPartyById(String partyId) {
-        return parties.get(partyId);
-    }
-
-    public List<Party> getParties() {
-        return parties.values().stream().toList();
     }
 
     public static boolean removeParty(String partyId) {

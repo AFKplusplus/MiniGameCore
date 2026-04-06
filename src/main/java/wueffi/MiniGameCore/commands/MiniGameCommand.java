@@ -51,7 +51,7 @@ public class MiniGameCommand implements CommandExecutor {
     private static final Map<Player, Lobby> confirmations = new HashMap<>();
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String @NotNull [] args) {
         LobbyManager lobbyManager = LobbyManager.getInstance();
         Party party;
         GameConfig config;
@@ -127,7 +127,7 @@ public class MiniGameCommand implements CommandExecutor {
                             }
                             lobby.addPlayer(player1);
                             if (world == null) {
-                                getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
+                                plugin.getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
                                 player1.teleport(lobby.getOwner().getLocation());
                             } else {
                                 Location spawnLocation = world.getSpawnLocation();
@@ -206,7 +206,7 @@ public class MiniGameCommand implements CommandExecutor {
                             }
                             lobby.addPlayer(player1);
                             if (world == null) {
-                                getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
+                                plugin.getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
                                 player1.teleport(lobby.getOwner().getLocation());
                             } else {
                                 Location spawnLocation = world.getSpawnLocation();
@@ -231,12 +231,12 @@ public class MiniGameCommand implements CommandExecutor {
                 for (Player gamer : lobby.getPlayers()) {
                     gamer.sendMessage("§8[§6MiniGameCore§8]§a " + player.getName() + " joined! " + lobby.getPlayers().size() + "/" + lobby.getMaxPlayers() + " players.");
                 }
-                World world = Bukkit.getWorld(lobby.getWorldFolder().getName());
-                if (world == null) {
-                    getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
+                World world1 = Bukkit.getWorld(lobby.getWorldFolder().getName());
+                if (world1 == null) {
+                    plugin.getLogger().warning("World was null! Teleporting to Owner instead. Lobby: " + lobby.getLobbyId() + ", State: " + lobby.getLobbyState());
                     player.teleport(lobby.getOwner().getLocation());
                 } else {
-                    Location spawnLocation = world.getSpawnLocation();
+                    Location spawnLocation = world1.getSpawnLocation();
                     player.teleport(spawnLocation);
                 }
                 PlayerHandler.PlayerSoftReset(player);
@@ -441,7 +441,7 @@ public class MiniGameCommand implements CommandExecutor {
                 }
 
                 player.sendMessage("§8[§6MiniGameCore§8] §aYou are not spectating the game anymore.");
-                world = Bukkit.getWorld("world");
+                World world = Bukkit.getWorld("world");
                 assert world != null;
                 player.teleport(world.getSpawnLocation());
                 player.setGameMode(Bukkit.getDefaultGameMode());
@@ -544,11 +544,11 @@ public class MiniGameCommand implements CommandExecutor {
                 player.sendMessage("§8[§6MiniGameCore§8] §cBanning player: " + args[1]);
                 plugin.banPlayer(Objects.requireNonNull(Bukkit.getPlayer(args[1])).getUniqueId());
                 if (args.length == 2) {
-                    getLogger().info(player.getName() + " banned Player: " + args[1] + ".");
+                    plugin.getLogger().info(player.getName() + " banned Player: " + args[1] + ".");
                 } else {
                     String[] tempReason = Arrays.copyOfRange(args, 2, args.length);
                     String reason = String.join(" ", tempReason);
-                    getLogger().info(player.getName() + " banned Player: " + args[1] + "with reason: " + reason);
+                    plugin.getLogger().info(player.getName() + " banned Player: " + args[1] + "with reason: " + reason);
                 }
                 player.sendMessage("§8[§6MiniGameCore§8] §cBanned player: " + args[1]);
                 break;
@@ -564,7 +564,7 @@ public class MiniGameCommand implements CommandExecutor {
                 }
                 player.sendMessage("§8[§6MiniGameCore§8] §cUnbanning player: " + args[1]);
                 plugin.unbanPlayer(Objects.requireNonNull(Bukkit.getPlayer(args[1])).getUniqueId());
-                getLogger().info(player.getName() + " unbanned Player: " + args[1] + ".");
+                plugin.getLogger().info(player.getName() + " unbanned Player: " + args[1] + ".");
                 player.sendMessage("§8[§6MiniGameCore§8] §cUnbanned player: " + args[1]);
                 break;
 

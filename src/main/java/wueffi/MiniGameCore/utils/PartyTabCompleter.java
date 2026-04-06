@@ -5,11 +5,11 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 import wueffi.MiniGameCore.MiniGameCore;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PartyTabCompleter implements TabCompleter {
     private final MiniGameCore plugin;
@@ -19,7 +19,7 @@ public class PartyTabCompleter implements TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String @NotNull [] args) {
         if (!(sender instanceof Player player)) {
             return null;
         }
@@ -67,6 +67,6 @@ public class PartyTabCompleter implements TabCompleter {
 
         return completions.stream()
                 .filter(s -> s.toLowerCase().startsWith(args[args.length - 1].toLowerCase()))
-                .collect(Collectors.toList());
+                .toList();
     }
 }

@@ -1,34 +1,21 @@
 package wueffi.MiniGameCore.commands;
 
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.event.ClickEvent;
-import net.kyori.adventure.text.event.HoverEvent;
-import net.kyori.adventure.text.format.NamedTextColor;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.MiniGameCore;
 import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.managers.PartyManager;
 import wueffi.MiniGameCore.utils.Lobby;
-import wueffi.MiniGameCore.utils.Party;
 import wueffi.MiniGameCore.utils.Team;
 
-import java.util.Arrays;
-import java.util.HashMap;
-
 public class TeamChatCommand implements CommandExecutor {
-    private final MiniGameCore plugin;
 
-    public TeamChatCommand(MiniGameCore plugin) {
-        this.plugin = plugin;
+    public TeamChatCommand() {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String @NotNull [] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Only players can use this command!");
             return true;
@@ -56,9 +43,7 @@ public class TeamChatCommand implements CommandExecutor {
         }
 
         for (Player player1 : team.getPlayers()) {
-            if (!player1.equals(player)) {
-                player1.sendMessage("§7[§6TEAM§7] §f" + String.join(" ", args));
-            }
+            player1.sendMessage("§7[§6TEAM§7] " + team.getColorCode() + player.getName() + "§7: §f" + String.join(" ", args));
         }
 
         return true;

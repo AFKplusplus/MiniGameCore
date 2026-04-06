@@ -40,7 +40,7 @@ public class Stats {
 
     public static boolean getStats(UUID uuid) {
         return statsConfig.contains(uuid.toString());
-    };
+    }
 
     private static void ensurePlayer(UUID uuid, String game) {
         String base = uuid + "." + game;

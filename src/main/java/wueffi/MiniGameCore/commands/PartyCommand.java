@@ -34,7 +34,7 @@ public class PartyCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, String @NotNull [] args) {
         PartyManager partyManager = PartyManager.getInstance();
         Party party;
         Player target;
@@ -159,11 +159,10 @@ public class PartyCommand implements CommandExecutor {
                     }
                     if (party.addPlayer(player)) {
                         player.sendMessage("§8[§6MiniGameCore§8]§a You joined the party: " + party.getPartyName());
-                        return true;
                     } else {
                         player.sendMessage("§8[§6MiniGameCore§8]§a Could not join " + party.getPartyName() + ".");
-                        return true;
                     }
+                    return true;
                 } else {
                     player.sendMessage("§8[§6MiniGameCore§8]§a You were not invited to " + party.getPartyName() + ".");
                 }

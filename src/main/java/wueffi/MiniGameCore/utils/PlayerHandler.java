@@ -1,7 +1,6 @@
 package wueffi.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -30,8 +29,11 @@ public class PlayerHandler implements Listener {
             if (config.getTeams() > 0) {
                 Team team = lobby.getTeamByPlayer(player);
                 if (team != null) {
-                    team.removePlayer(player);
-                    team.decreaseAlive();
+                    if (team.removePlayer(player)) {
+                        team.decreaseAlive();
+                    } else {
+                        plugin.getLogger().warning("Failed to remove player " + player + " from Team!");
+                    }
                 }
             }
 
@@ -85,9 +87,7 @@ public class PlayerHandler implements Listener {
         Player player = event.getPlayer();
         GameManager.removeLastHitandFrozen(player.getUniqueId());
         GameManager.playerDeath(player.getUniqueId());
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            PlayerReset(player);
-        }, 5L);
+        Bukkit.getScheduler().runTaskLater(plugin, () -> PlayerReset(player), 5L);
         GameManager.frozenPlayers.remove(player);
     }
 }

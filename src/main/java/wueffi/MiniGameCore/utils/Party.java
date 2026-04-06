@@ -47,10 +47,6 @@ public class Party {
         return players;
     }
 
-    public Set<Player> getPlayersInvited() {
-        return playersInvited;
-    }
-
     public String getPartyId() {
         return partyId;
     }

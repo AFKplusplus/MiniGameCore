@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.toList;
-
 public class MiniGameCore extends JavaPlugin {
     private final MiniGameCore plugin = this;
     private List<String> availableGames;
@@ -31,7 +29,7 @@ public class MiniGameCore extends JavaPlugin {
         saveDefaultConfig();
 
         List<String> availableGames = getConfig().getStringList("available-games");
-        List<UUID> bannedPlayers = new ArrayList<UUID>();
+        List<UUID> bannedPlayers = new ArrayList<>();
         boolean keepWorlds = getConfig().getBoolean("keep-worlds");
         for (String UUIDstring : getConfig().getStringList("banned-players")) {
             try {
@@ -55,8 +53,8 @@ public class MiniGameCore extends JavaPlugin {
         getCommand("party").setTabCompleter(new PartyTabCompleter(this));
         getCommand("p").setExecutor(new PartyCommand(this));
         getCommand("p").setTabCompleter(new PartyTabCompleter(this));
-        getCommand("teamchat").setExecutor(new TeamChatCommand(this));
-        getCommand("tc").setExecutor(new TeamChatCommand(this));
+        getCommand("teamchat").setExecutor(new TeamChatCommand());
+        getCommand("tc").setExecutor(new TeamChatCommand());
         getLogger().info("Commands registered!");
 
         getLogger().info("Starting cleanup task...");
