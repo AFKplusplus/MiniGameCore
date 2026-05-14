@@ -11,7 +11,7 @@ import ore.MiniGameCore.commands.PartyCommand
 import ore.MiniGameCore.commands.TeamChatCommand
 import ore.MiniGameCore.managers.GameManager
 import ore.MiniGameCore.managers.LobbyManager
-import ore.MiniGameCore.managers.ScoreBoardManager
+import ore.MiniGameCore.managers.ScoreboardManager
 import ore.MiniGameCore.utils.*
 
 // Java imports
@@ -22,7 +22,7 @@ import java.util.stream.Stream
 
 class MiniGameCore : JavaPlugin() {
 
-    //// Initialize variables
+    // Initialize variables
     private val plugin: MiniGameCore = this
     private var availableGames: List<String>
     private var bannedPlayerrs: List<UUID>
@@ -30,7 +30,7 @@ class MiniGameCore : JavaPlugin() {
     private var lobbymanager: LobbyManager
 
 
-    //// When the plugin is enabled (e.g. when the server starts up)
+    // When the plugin is enabled (e.g. when the server starts up)
     override fun onEnable() {
 
         // Tell the console that the plugin is enabled and save the default config
@@ -59,7 +59,7 @@ class MiniGameCore : JavaPlugin() {
             }
         }
 
-        //// Set this plugin's variables to the variables we just initialized
+        // Set this plugin's variables to the variables we just initialized
         this.avaiableGames = availableGames
         this.bannedPlayers = bannedPlayers
         this.keepWorlds = keepWorlds
@@ -95,7 +95,7 @@ class MiniGameCore : JavaPlugin() {
         LobbyManager.cleanUpLobbies(this)
 
         // If the scoreboard is not disabled, start the scoreboard animation loop
-        if (!disableScoreboard) ScoreBoardManager.startAnimationLoop()
+        if (!disableScoreboard) ScoreboardManager.startAnimationLoop()
 
         // Set the lobby handler plugin to this plugin and initialize the lobby manager
         LobbyHandler.setPlugin(this)
@@ -107,7 +107,7 @@ class MiniGameCore : JavaPlugin() {
 
     }
 
-    //// When the plugin is disabled (e.g. when the server is stopped)
+    // When the plugin is disabled (e.g. when the server is stopped)
     override fun onDisable() {
 
         // Close every open and closed lobby
@@ -140,22 +140,22 @@ class MiniGameCore : JavaPlugin() {
         getLogger().info("MiniGameCore plugin disabled!")
     }
 
-    //// Get all currently available games
+    // Get all currently available games
     public fun getAvailableGames(): List<String> {
         return availableGames
     }
 
-    //// Get all currently banned palyers
+    // Get all currently banned palyers
     public fun getBannedPlayers(): List<UUID> {
         return bannedPlayers
     }
 
-    //// Get the setting whether to keep the worlds
+    // Get the setting whether to keep the worlds
     public getKeepWorlds(): Boolean {
         return keepWorlds
     }
 
-    //// Update the banned players list in the config
+    // Update the banned players list in the config
     private fun writeBannedPlayers() {
 
         // Initialize banned players list
@@ -171,13 +171,13 @@ class MiniGameCore : JavaPlugin() {
         saveConfig()
     }
 
-    //// Ban a player and update the config
+    // Ban a player and update the config
     public fun banPlayer(player: UUID) {
         bannedPlayers.add(player)
         writeBannedPlayers()
     }
 
-    //// Unban a player and update the config
+    // Unban a player and update the config
     public fun unbanPlayer(player: UUID) {
         bannedPlayers.remove(player)
         writeBannedPlayers()
