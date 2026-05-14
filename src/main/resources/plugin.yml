@@ -1,9 +1,9 @@
 name: MiniGameCore
 version: '1.3.7.2'
-main: wueffi.MiniGameCore.MiniGameCore
+main: ore.MiniGameCore.MiniGameCore
 api-version: '1.21'
 load: STARTUP
-authors: [ "Waffle [ Wueffi ]" ]
+authors: [ "Waffle [ Wueffi ]", "JoBe", "AFKplusplus", "sebkuip", "jacklack" ]
 description: Core Plugin for a linked MiniGame System.
 depend: [ ]
 commands:
