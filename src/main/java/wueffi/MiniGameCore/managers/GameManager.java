@@ -590,7 +590,7 @@ public class GameManager implements Listener {
 
     @EventHandler
     public void catchContainerOpen(InventoryOpenEvent event) {
-        if(!event.getInventory().getType().equals(InventoryType.PLAYER))
+        if (!event.getInventory().getType().equals(InventoryType.PLAYER) && !event.getInventory().getType().equals(InventoryType.CHEST))
         {
             final Player player = (Player) event.getPlayer();
             Lobby lobby = LobbyManager.getLobbyByPlayer(player);
