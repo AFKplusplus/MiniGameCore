@@ -1,9 +1,9 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import wueffi.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.MiniGameCore;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import static java.nio.file.Files.move;
 import static org.bukkit.Bukkit.getLogger;
-import static wueffi.MiniGameCore.managers.LobbyManager.removeLobby;
+import static ore.MiniGameCore.managers.LobbyManager.removeLobby;
 
 public class LobbyHandler {
     private static MiniGameCore plugin;

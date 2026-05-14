@@ -1,12 +1,12 @@
-package wueffi.MiniGameCore.api;
+package ore.MiniGameCore.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-import wueffi.MiniGameCore.managers.GameManager;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.utils.Lobby;
-import wueffi.MiniGameCore.utils.Team;
-import wueffi.MiniGameCore.utils.Winner;
+import ore.MiniGameCore.managers.GameManager;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.utils.Lobby;
+import ore.MiniGameCore.utils.Team;
+import ore.MiniGameCore.utils.Winner;
 
 import java.util.UUID;
 

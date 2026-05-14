@@ -1,10 +1,10 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
-import wueffi.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.managers.LobbyManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;

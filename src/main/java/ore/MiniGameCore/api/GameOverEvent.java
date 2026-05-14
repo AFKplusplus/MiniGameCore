@@ -1,9 +1,9 @@
-package wueffi.MiniGameCore.api;
+package ore.MiniGameCore.api;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.utils.Lobby;
+import ore.MiniGameCore.utils.Lobby;
 
 public class GameOverEvent extends Event {
 

@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -8,9 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.Plugin;
-import wueffi.MiniGameCore.managers.GameManager;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.managers.PartyManager;
+import ore.MiniGameCore.managers.GameManager;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.managers.PartyManager;
 
 public class PlayerHandler implements Listener {
 

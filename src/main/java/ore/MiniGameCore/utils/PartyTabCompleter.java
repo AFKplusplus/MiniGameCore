@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.MiniGameCore;
 
 import java.util.ArrayList;
 import java.util.List;

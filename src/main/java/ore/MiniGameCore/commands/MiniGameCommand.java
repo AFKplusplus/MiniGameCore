@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.commands;
+package ore.MiniGameCore.commands;
 
 import org.bukkit.*;
 import org.bukkit.command.Command;
@@ -6,12 +6,12 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.MiniGameCore;
-import wueffi.MiniGameCore.managers.GameManager;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.managers.PartyManager;
-import wueffi.MiniGameCore.managers.ScoreBoardManager;
-import wueffi.MiniGameCore.utils.*;
+import ore.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.managers.GameManager;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.managers.PartyManager;
+import ore.MiniGameCore.managers.ScoreBoardManager;
+import ore.MiniGameCore.utils.*;
 
 import java.io.File;
 import java.util.Arrays;

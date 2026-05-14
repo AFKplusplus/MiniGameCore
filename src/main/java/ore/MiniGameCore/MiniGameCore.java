@@ -1,15 +1,15 @@
-package wueffi.MiniGameCore;
+package ore.MiniGameCore;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-import wueffi.MiniGameCore.commands.MiniGameCommand;
-import wueffi.MiniGameCore.commands.PartyCommand;
-import wueffi.MiniGameCore.commands.TeamChatCommand;
-import wueffi.MiniGameCore.managers.GameManager;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.managers.ScoreBoardManager;
-import wueffi.MiniGameCore.utils.*;
+import ore.MiniGameCore.commands.MiniGameCommand;
+import ore.MiniGameCore.commands.PartyCommand;
+import ore.MiniGameCore.commands.TeamChatCommand;
+import ore.MiniGameCore.managers.GameManager;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.managers.ScoreBoardManager;
+import ore.MiniGameCore.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;

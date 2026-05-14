@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.managers;
+package ore.MiniGameCore.managers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -7,17 +7,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import wueffi.MiniGameCore.MiniGameCore;
-import wueffi.MiniGameCore.utils.GameConfig;
-import wueffi.MiniGameCore.utils.Lobby;
-import wueffi.MiniGameCore.utils.ScoreBoard;
-import wueffi.MiniGameCore.utils.Stats;
+import ore.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.utils.GameConfig;
+import ore.MiniGameCore.utils.Lobby;
+import ore.MiniGameCore.utils.ScoreBoard;
+import ore.MiniGameCore.utils.Stats;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import static wueffi.MiniGameCore.managers.GameManager.alivePlayers;
+import static ore.MiniGameCore.managers.GameManager.alivePlayers;
 
 public class ScoreBoardManager implements Listener {
 

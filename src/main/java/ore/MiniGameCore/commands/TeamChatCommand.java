@@ -1,13 +1,13 @@
-package wueffi.MiniGameCore.commands;
+package ore.MiniGameCore.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.utils.Lobby;
-import wueffi.MiniGameCore.utils.Team;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.utils.Lobby;
+import ore.MiniGameCore.utils.Team;
 
 public class TeamChatCommand implements CommandExecutor {
 

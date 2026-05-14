@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.entity.Player;
 import java.util.HashSet;

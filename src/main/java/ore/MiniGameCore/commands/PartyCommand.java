@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.commands;
+package ore.MiniGameCore.commands;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -10,9 +10,9 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import wueffi.MiniGameCore.MiniGameCore;
-import wueffi.MiniGameCore.managers.PartyManager;
-import wueffi.MiniGameCore.utils.*;
+import ore.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.managers.PartyManager;
+import ore.MiniGameCore.utils.*;
 import java.util.HashMap;
 
 public class PartyCommand implements CommandExecutor {

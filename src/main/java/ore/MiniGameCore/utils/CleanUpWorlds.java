@@ -1,9 +1,9 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-import wueffi.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.MiniGameCore;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,9 +1,9 @@
-package wueffi.MiniGameCore.utils;
+package ore.MiniGameCore.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import wueffi.MiniGameCore.managers.LobbyManager;
-import wueffi.MiniGameCore.managers.ScoreBoardManager;
+import ore.MiniGameCore.managers.LobbyManager;
+import ore.MiniGameCore.managers.ScoreBoardManager;
 
 import java.io.File;
 import java.util.*;

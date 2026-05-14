@@ -1,4 +1,4 @@
-package wueffi.MiniGameCore.managers;
+package ore.MiniGameCore.managers;
 
 import org.bukkit.*;
 import org.bukkit.command.CommandSender;
@@ -20,16 +20,16 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
-import wueffi.MiniGameCore.MiniGameCore;
-import wueffi.MiniGameCore.api.GameOverEvent;
-import wueffi.MiniGameCore.api.GameStartEvent;
-import wueffi.MiniGameCore.utils.*;
+import ore.MiniGameCore.MiniGameCore;
+import ore.MiniGameCore.api.GameOverEvent;
+import ore.MiniGameCore.api.GameStartEvent;
+import ore.MiniGameCore.utils.*;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.util.*;
 
-import static wueffi.MiniGameCore.utils.PlayerHandler.PlayerSoftReset;
+import static ore.MiniGameCore.utils.PlayerHandler.PlayerSoftReset;
 
 public class GameManager implements Listener {
     static final Map<Lobby, List<Player>> alivePlayers = new HashMap<>();

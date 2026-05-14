@@ -1,7 +1,7 @@
-package wueffi.MiniGameCore.managers;
+package ore.MiniGameCore.managers;
 
 import org.bukkit.entity.Player;
-import wueffi.MiniGameCore.utils.Party;
+import ore.MiniGameCore.utils.Party;
 
 import java.util.HashMap;
 import java.util.Map;
