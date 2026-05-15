@@ -1,16 +1,16 @@
 package ore.MiniGameCore.utils;
 
 // Bukkit imports
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 
 // MiniGameCore imports
-import ore.MiniGameCore.managers.LobbyManager;
-import ore.MiniGameCore.managers.ScoreboardManager;
+import ore.MiniGameCore.managers.LobbyManager
+import ore.MiniGameCore.managers.ScoreboardManager
 
 // Java imports
-import java.io.File;
-import java.util.*;
+import java.io.File
+import java.util.*
 
 public class Lobby {
 
