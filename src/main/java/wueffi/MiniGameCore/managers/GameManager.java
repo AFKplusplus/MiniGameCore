@@ -590,19 +590,20 @@ public class GameManager implements Listener {
 
     @EventHandler
     public void catchContainerOpen(InventoryOpenEvent event) {
-        if (!event.getInventory().getType().equals(InventoryType.PLAYER) && !event.getInventory().getType().equals(InventoryType.CHEST))
-        {
-            final Player player = (Player) event.getPlayer();
-            Lobby lobby = LobbyManager.getLobbyByPlayer(player);
-            if (lobby == null) {
-                event.setCancelled(false);
-                return;
-            }
-            if (!Objects.equals(lobby.getLobbyState(), "GAME")) {
-                player.sendMessage("§8[§6MiniGameCore§8]§c You can't open Containers yet!");
-                event.setCancelled(true);
-            }
+        Player player = (Player) event.getPlayer();
+        Lobby lobby = LobbyManager.getLobbyByPlayer(player);
+        if (lobby == null) {
+            event.setCancelled(false);
+            return;
         }
+        GameConfig config = getConfig(lobby);
+
+        if (lobby.getLobbyState().equals("GAME")) return;
+        if (config.getAllowOpeningContainers()) return;
+        if (event.getInventory().getType().equals(InventoryType.PLAYER)) return;
+
+        player.sendMessage("§8[§6MiniGameCore§8]§c You can't open Containers yet!");
+        event.setCancelled(true);
     }
 
     @EventHandler
