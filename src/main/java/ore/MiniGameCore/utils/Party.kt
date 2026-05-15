@@ -5,6 +5,7 @@ import org.bukkit.entity.Player
 
 // Java imports
 import java.util.HashSet
+import java.util.Set
 
 public class Party {
 
@@ -12,8 +13,8 @@ public class Party {
     private val partyID: String
     private val partyName: String
     private val owner: Player
-    private val players: HashSet<Player> = HashSet()
-    private val playersInvited: HashSet<Player> = HashSet()
+    private val players: Set<Player> = HashSet()
+    private val playersInvited: Set<Player> = HashSet()
 
     // Class constructor function
     public fun Party(partyID: String, partyName: String, owner: Player) {
@@ -68,7 +69,7 @@ public class Party {
     }
 
     // Get the list of players in a party
-    public fun getPlayers(): HashSet<Player> {
+    public fun getPlayers(): Set<Player> {
         return players
     }
 
@@ -96,5 +97,5 @@ public class Party {
     public fun denyInvite(player: Player): Boolean {
         return playersInvited.remove(player)
     }
-    
+
 }

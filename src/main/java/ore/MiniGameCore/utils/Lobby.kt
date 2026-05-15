@@ -18,12 +18,12 @@ public class Lobby {
     private val lobbyID: String
     private val gameName: String
     private val maxPlayers: Int
-    private val players: HashSet<UUID> = HashSet()
+    private val players: Set<UUID> = HashSet()
     private val owner: Player
     private val worldFolder: File
-    private val readyPlayers: HashSet<Player> = HashSet()
+    private val readyPlayers: Set<Player> = HashSet()
     private var lobbyState: String
-    private val teamList: ArrayList<Team> = ArrayList()
+    private val teamList: List<Team> = ArrayList()
     private var teamCounter: Int = 0
 
     // Initialization function for the Lobby class
@@ -116,7 +116,7 @@ public class Lobby {
     }
 
     // Get the team list
-    public fun getTeamList(): ArrayList<Team> {
+    public fun getTeamList(): List<Team> {
         return teamList
     }
 

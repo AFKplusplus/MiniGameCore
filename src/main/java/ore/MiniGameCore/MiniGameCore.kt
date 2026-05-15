@@ -24,8 +24,8 @@ class MiniGameCore : JavaPlugin() {
 
     // Initialize variables
     private val plugin: MiniGameCore = this
-    private var availableGames: List<String>
-    private var bannedPlayerrs: List<UUID>
+    private var availableGames: List<String> = ArrayList()
+    private var bannedPlayerrs: List<UUID> = ArrayList()
     private var keepWorlds: Boolean
     private var lobbymanager: LobbyManager
 
