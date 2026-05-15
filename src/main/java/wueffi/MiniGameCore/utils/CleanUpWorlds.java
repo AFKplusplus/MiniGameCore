@@ -57,7 +57,7 @@ public class CleanUpWorlds {
                 }
             }
         }
-        if (plugin.getKeepWorlds() == true) plugin.getLogger().info("Found and deleted " + worldsDeleted + " old worlds.");
+        if (!plugin.getKeepWorlds()) plugin.getLogger().info("Found and deleted " + worldsDeleted + " old worlds.");
         else plugin.getLogger().info("Found and archived " + worldsDeleted + " old worlds.");
     }
 
