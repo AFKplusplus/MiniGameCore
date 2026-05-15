@@ -87,6 +87,7 @@ All available options:
 | `allowFriendlyFire`     | Allow members of the same team to attack each other               | ❌ No (default: false) |
 | `allowCrafting`         | Allows Players to craft items during the game                     | ❌ No (default: false) |
 | `silenceDeathMessages`  | Whether or not to silence death messages                          | ❌ No (default: false) |
+| `allowOpeningContainers`| Allows players to open containers before the game starts          | ❌ No (default: false) |
 
 Example config for an 8 player Spleef-Game:
 ```
