@@ -4,6 +4,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Criteria;
+import net.kyori.adventure.text.Component;
 import wueffi.MiniGameCore.managers.LobbyManager;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.List;
 public class ScoreBoard {
 
     private static final List<String> animations = Arrays.asList("§b§l» Lobbies", "§b§l» Stats");
-    private static final String TITLE = "§6§lMiniGameCore";
+    private static final Component TITLE = Component.text("§6§lMiniGameCore");
     private static int animationIndex = 0;
 
     public static void createGameBoard(Player player, List<Player> alive) {
@@ -22,7 +24,7 @@ public class ScoreBoard {
             obj.unregister();
         }
 
-        Objective obj = board.registerNewObjective("game", "dummy", TITLE);
+        Objective obj = board.registerNewObjective("game", Criteria.DUMMY, TITLE);
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int count = alive != null ? alive.size() : 0;
@@ -51,7 +53,7 @@ public class ScoreBoard {
             obj.unregister();
         }
 
-        Objective obj = board.registerNewObjective("teamgame", "dummy", TITLE);
+        Objective obj = board.registerNewObjective("teamgame", Criteria.DUMMY, TITLE);
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         Lobby lobby = LobbyManager.getLobbyByPlayer(player);
@@ -100,7 +102,7 @@ public class ScoreBoard {
             obj.unregister();
         }
 
-        Objective obj = board.registerNewObjective("lobby", "dummy", TITLE);
+        Objective obj = board.registerNewObjective("lobby", Criteria.DUMMY, TITLE);
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         List<Player> players = new ArrayList<>(lobby.getPlayers());
@@ -136,7 +138,7 @@ public class ScoreBoard {
         }
 
         String title = animations.get(animationIndex);
-        Objective obj = board.registerNewObjective("idle", "dummy", TITLE);
+        Objective obj = board.registerNewObjective("idle", Criteria.DUMMY, TITLE);
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         if (animationIndex == 0) {
