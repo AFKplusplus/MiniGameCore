@@ -111,7 +111,7 @@ public class CleanUpWorlds {
     }
 
     // Deleting a file/folder
-    private  fun delete(file: File): Boolean {
+    private fun delete(file: File): Boolean {
 
         // If the file is a folder, loop through every file in the folder and delete it
         if (file.isDirectory) {

@@ -53,7 +53,7 @@ public class PartyTabCompleter : TabCompleter {
             "mgcore.party.list",
         }
 
-        // If there is only 1 argument (only typed /mg) tell the user of the available subcommands
+        // If there is only 1 argument (only typed /party) tell the user of the available subcommands
         if (args.length == 1) {
             for (idx: Int in 0..commands.length - 1) {
                 if (sender.hasPermission(permissions[idx])) {
@@ -62,17 +62,17 @@ public class PartyTabCompleter : TabCompleter {
             }
         }
         
-        // Otherwise if there are two arguments (e.g. /mg create) show the tab completions for the commands
+        // Otherwise if there are two arguments (e.g. /party create) show the tab completions for the commands
         // Also don't show tab completions for players that are banned
         else if (args.length == 2 && !plugin.getBannedPlayers().contains(player.getUniqueId())) {
 
             when (args[0].toLowerCase()) {
                 
-                // /mg join
+                // /party join
                 "join" -> {
                     
                     // If the player has the permission to join the party 
-                    if (player.hasPermission("mgcore.party.join")) {
+                    if (sender.hasPermission("mgcore.party.join")) {
                         tabCompletions = ArrayList()
 
                         // For every currently online player, add the username to the tab completions
@@ -86,11 +86,11 @@ public class PartyTabCompleter : TabCompleter {
                     }
                 }
 
-                // /mg invite|deny
+                // /party invite|deny
                 "invite", "deny" -> {
                     
                     // If the player has the permission to invite players to the party 
-                    if (player.hasPermission("mgcore.party.invite")) {
+                    if (sender.hasPermission("mgcore.party.invite")) {
                         tabCompletions = ArrayList()
 
                         // For every currently online player, add the username to the tab completions
@@ -109,7 +109,9 @@ public class PartyTabCompleter : TabCompleter {
 
         // Return the tab completions that fit the argument the player entered
         return tabCompletions.stream()
-                .filter(s -> s.toLowerCase().startsWith(args[args.length - 1].toLowerCase()))
+                .filter(s -> s.toLowerCase()
+                .startsWith(args[args.length - 1]
+                .toLowerCase()))
                 .toList()
 
     }
