@@ -24,9 +24,12 @@ import wueffi.MiniGameCore.MiniGameCore;
 import wueffi.MiniGameCore.api.GameOverEvent;
 import wueffi.MiniGameCore.api.GameStartEvent;
 import wueffi.MiniGameCore.utils.*;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.title.Title;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.time.Duration;
 import java.util.*;
 
 import static wueffi.MiniGameCore.utils.PlayerHandler.PlayerSoftReset;
@@ -73,7 +76,7 @@ public class GameManager implements Listener {
             for (Player player : lobby.getPlayers()) {
                 if (playerList.contains(player))  Stats.tie(lobby.getGameName(), player);
                 else Stats.lose(lobby.getGameName(), player);
-                player.sendTitle("§6The Game", "was tied!", 10, 70, 20);
+                showTitle(player, "§6The Game", "was tied!", 10, 70, 20);
                 lastHit.remove(player.getUniqueId());
                 playerRespawnPoints.remove(player.getUniqueId());
                 runDelayed(() -> PlayerHandler.PlayerReset(player), 4);
@@ -85,7 +88,7 @@ public class GameManager implements Listener {
                 if (team.equals(winnerTeam)) {
                     for (Player teamPlayer : team.getPlayers()) {
                         Stats.win(lobby.getGameName(), teamPlayer);
-                        teamPlayer.sendTitle("§6Your Team", "won the Game!", 10, 70, 20);
+                        showTitle(teamPlayer, "§6Your Team", "won the Game!", 10, 70, 20);
                         teamPlayer.playSound(teamPlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
                         lastHit.remove(teamPlayer.getUniqueId());
                         playerRespawnPoints.remove(teamPlayer.getUniqueId());
@@ -94,7 +97,7 @@ public class GameManager implements Listener {
                 } else {
                     for (Player teamPlayer : team.getPlayers()) {
                         Stats.lose(lobby.getGameName(), teamPlayer);
-                        teamPlayer.sendTitle("§6The " + winnerTeam.getColorCode() + winnerTeam.getColor() + " §6Team", "won the Game!", 10, 70, 20);
+                        showTitle(teamPlayer, "§6The " + winnerTeam.getColorCode() + winnerTeam.getColor() + " §6Team", "won the Game!", 10, 70, 20);
                         teamPlayer.playSound(teamPlayer.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
                         lastHit.remove(teamPlayer.getUniqueId());
                         playerRespawnPoints.remove(teamPlayer.getUniqueId());
@@ -111,7 +114,7 @@ public class GameManager implements Listener {
                     Stats.lose(lobby.getGameName(), player);
                 }
 
-                player.sendTitle("§6" + winnerPlayer.getName(), "won the Game!", 10, 70, 20);
+                showTitle(player, "§6" + winnerPlayer.getName(), "won the Game!", 10, 70, 20);
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
                 lastHit.remove(player.getUniqueId());
                 playerRespawnPoints.remove(player.getUniqueId());
@@ -191,14 +194,14 @@ public class GameManager implements Listener {
             public void run() {
                 if (timeLeft > 0) {
                     for (Player player : lobby.getPlayers()) {
-                        player.sendTitle("§aGame starting in " + timeLeft, "", 10, 70, 20);
+                        showTitle(player, "§aGame starting in " + timeLeft, "", 10, 70, 20);
                         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_HAT, 1.0f, 2.0f);
                     }
                     timeLeft--;
                 } else {
                     lobby.setLobbyState("GAME");
                     for (Player player : lobby.getPlayers()) {
-                        player.sendTitle("§aGame Started!", "§cTeaming / Cheating is bannable!");
+                        showTitle(player, "§aGame Started!", "§cTeaming / Cheating is bannable!", 10, 70, 20);
                         player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1.0f, 5.0f);
                         ScoreBoardManager.setPlayerStatus(player, "GAME");
                         for (Material material : gameConfig.getStartInventory()) {
@@ -323,6 +326,26 @@ public class GameManager implements Listener {
                 Files.copy(file.toPath(), new File(destination, file.getName()).toPath());
             }
         }
+    }
+
+    // Creates a title to show to the player
+    private static void showTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks) {
+
+        // Title and subtitle
+        Component mainTitle = Component.text(title);
+        Component subTitle = Component.text(subtitle);
+
+        // Times for the title
+        Title.Times titleTimes = Title.Times.times(
+                Duration.ofMillis(50L * fadeInTicks),
+                Duration.ofMillis(50L * stayTicks),
+                Duration.ofMillis(50L * fadeOutTicks)
+        );
+
+        // Create the title and show it to the player
+        Title showPlayerTitle = Title.title(mainTitle, subTitle, titleTimes);
+        player.showTitle(showPlayerTitle);
+
     }
 
     public static Location getRespawnPoint(UUID playerId) {
@@ -492,7 +515,7 @@ public class GameManager implements Listener {
                                 if (secondsLeft <= 0) {
                                     player.teleport(respawnLocation);
                                     player.setGameMode(GameMode.SURVIVAL);
-                                    player.sendTitle("§aRespawned!", "", 10, 20, 10);
+                                    showTitle(player, "§aRespawned!", "", 10, 20, 10);
 
                                     List<Player> alive = alivePlayers.get(lobby);
                                     if (alive != null && !alive.contains(player)) {
@@ -501,7 +524,7 @@ public class GameManager implements Listener {
 
                                     this.cancel();
                                 } else {
-                                    player.sendTitle("§cRespawning in", "§c" + secondsLeft + " s", 0, 20, 0);
+                                    showTitle(player, "§cRespawning in", "§c" + secondsLeft + " s", 0, 20, 0);
                                     secondsLeft--;
                                 }
                             }
